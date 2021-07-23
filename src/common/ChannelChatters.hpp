@@ -3,7 +3,6 @@
 #include "common/Channel.hpp"
 #include "common/ChatterSet.hpp"
 #include "common/UniqueAccess.hpp"
-#include "lrucache/lrucache.hpp"
 #include "util/QStringHash.hpp"
 
 #include <QRgb>
@@ -26,13 +25,11 @@ public:
     void updateOnlineChatters(const std::unordered_set<QString> &chatters);
 
 private:
-    static constexpr int maxChatterColorCount = 5000;
-
     Channel &channel_;
 
     // maps 2 char prefix to set of names
     UniqueAccess<ChatterSet> chatters_;
-    UniqueAccess<cache::lru_cache<QString, QRgb>> chatterColors_;
+    UniqueAccess<std::map<QString, QColor>> chatterColors_;
 
     // combines multiple joins/parts into one message
     UniqueAccess<QStringList> joinedUsers_;
