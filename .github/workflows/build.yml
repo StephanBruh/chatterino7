@@ -275,10 +275,10 @@ jobs:
           name: Chatterino-5.15.2-cmake.deb
           path: ubuntu-cmake/
 
-      - uses: actions/download-artifact@v2.0.10
-        with:
-          name: chatterino-osx-5.15.2-cmake.dmg
-          path: macos-cmake/
+      #- uses: actions/download-artifact@v2.0.10
+      #  with:
+      #    name: chatterino-osx-5.15.2-cmake.dmg
+      #    path: macos-cmake/
 
       # TODO: Extract dmg and appimage
 
@@ -347,12 +347,12 @@ jobs:
           asset_name: test-cmake-Chatterino-x86_64.deb
           asset_content_type: application/vnd.debian.binary-package
 
-      - name: Upload release asset (MacOS) CMake
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./macos-cmake/chatterino-osx.dmg
-          asset_name: test-cmake-chatterino-osx.dmg
-          asset_content_type: application/x-bzip2
+      #- name: Upload release asset (MacOS) CMake
+      #  uses: actions/upload-release-asset@v1.0.2
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  with:
+      #    upload_url: ${{ steps.create_release.outputs.upload_url }}
+      #    asset_path: ./macos-cmake/chatterino-osx.dmg
+      #    asset_name: test-cmake-chatterino-osx.dmg
+      #    asset_content_type: application/x-bzip2
