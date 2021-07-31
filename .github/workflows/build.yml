@@ -197,15 +197,6 @@ jobs:
             brew install boost openssl rapidjson p7zip create-dmg cmake tree
         shell: bash
 
-      - name: Build (MacOS)
-        if: startsWith(matrix.os, 'macos') && matrix.build-system == 'qmake'
-        run: |
-            mkdir build
-            cd build
-            $Qt5_DIR/bin/qmake .. DEFINES+=$dateOfBuild
-            make -j8
-        shell: bash
-
       - name: Build with CMake (MacOS)
         if: startsWith(matrix.os, 'macos') && matrix.build-system == 'cmake'
         run: |
